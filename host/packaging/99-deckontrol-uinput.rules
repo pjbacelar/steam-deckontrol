@@ -1,0 +1,11 @@
+# Grant the 'input' group write access to /dev/uinput so the Deckontrol host
+# daemon can create virtual devices without running as root.
+#
+# Install:
+#   sudo cp 99-deckontrol-uinput.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+#   sudo usermod -aG input "$USER"   # then log out/in
+#
+# On immutable SteamOS, /etc may be read-only; run `sudo steamos-readonly disable`
+# first, or run the daemon as root via a system service instead.
+KERNEL=="uinput", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"

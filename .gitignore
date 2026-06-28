@@ -1,0 +1,17 @@
+# Node / Decky frontend
+plugin/node_modules/
+plugin/dist/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Local config / secrets
+*.local.json

@@ -1,0 +1,11 @@
+{
+  "name": "Steam Deckontrol",
+  "author": "pjbacelar",
+  "flags": ["root"],
+  "api_version": 1,
+  "publish": {
+    "tags": ["controller", "input", "network", "remote-play"],
+    "description": "Turn your Steam Deck into a networked controller and dynamic input surface for your Steam Machine.",
+    "image": "https://raw.githubusercontent.com/pjbacelar/steam-deckontrol/main/assets/banner.png"
+  }
+}

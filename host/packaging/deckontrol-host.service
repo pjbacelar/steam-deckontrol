@@ -1,0 +1,23 @@
+# Steam Deckontrol host daemon (systemd user service).
+#
+# Install:
+#   pip install --user /path/to/host           # or: pipx install ./host
+#   cp packaging/deckontrol-host.service ~/.config/systemd/user/
+#   systemctl --user enable --now deckontrol-host
+#
+# Needs write access to /dev/uinput — install packaging/99-deckontrol-uinput.rules
+# so your user can open it without root.
+
+[Unit]
+Description=Steam Deckontrol host input daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/deckontrol-host
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

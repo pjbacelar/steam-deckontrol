@@ -1,0 +1,24 @@
+{
+  "name": "steam-deckontrol",
+  "version": "0.1.0",
+  "description": "Networked controller + dynamic input surface for Steam Machine, as a Decky plugin.",
+  "type": "module",
+  "scripts": {
+    "build": "shx rm -rf dist && rollup -c",
+    "watch": "rollup -c -w",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@decky/api": "^1.1.1",
+    "@decky/rollup": "^1.0.1",
+    "@decky/ui": "^4.7.0",
+    "@types/react": "16.14.0",
+    "rollup": "^4.9.6",
+    "shx": "^0.3.4",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "react-icons": "^4.12.0"
+  }
+}
