@@ -56,12 +56,17 @@ npm install && npm run build      # outputs dist/index.js
 ## Tests
 
 ```bash
-cd host && python -m pytest        # loopback: pairing, rejection, stale-frame drop
+cd host && python -m pytest        # loopback + full-stack integration
 cd plugin && npm run typecheck     # frontend type safety
 ```
 
-> **Note:** input capture and `uinput` injection require real Deck/PC hardware;
-> they can't be exercised in CI. The loopback test covers the
-> protocol/pairing/streaming logic end-to-end without hardware. Hardware-tuning
-> spots (Steam Input grabbing, exact evdev codes) are flagged in
-> `ARCHITECTURE.md` and inline.
+The host test suite includes a **hardware-free full-stack integration test**
+(`tests/test_integration.py`): it runs the real discovery handler, pairing
+handshake, binary frames over real loopback UDP, daemon stale-frame filtering,
+and the actual `VirtualController.apply()` / `InputCapture` mapping using real
+`evdev` constants — replacing only the kernel `uinput` device with a recorder.
+
+> **Note:** the one thing no CI/sandbox can exercise is the final kernel
+> `uinput` syscall and reading real Deck hardware — those need an actual
+> Deck + PC. Everything up to that boundary is tested. Hardware-tuning spots
+> (Steam Input grabbing, exact evdev codes) are flagged in `ARCHITECTURE.md`.
